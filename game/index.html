@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keeneye Cove — Spot the Difference</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◉</span>
+    <div>
+      <h1>Keeneye Cove</h1>
+      <p class="tagline">A spot-the-difference hunt in three scenes</p>
+    </div>
+  </div>
+  <div class="best" id="bestLabel"></div>
+</header>
+
+<section class="hud" aria-label="Game status">
+  <div class="hud-cell hud-level">
+    <span id="levelName">Welcome to the Cove</span>
+    <strong id="counter">Find every difference between the two pictures</strong>
+  </div>
+  <div class="hud-cell">
+    <span class="hud-label">Time</span>
+    <div class="timer-track"><div id="timerBar"></div></div>
+    <strong id="timerText"></strong>
+  </div>
+  <div class="hud-cell hud-nums">
+    <span id="score">Score 0</span>
+    <span id="hints">Hints 3</span>
+    <span id="mistakes">Misses 0</span>
+  </div>
+  <div class="hud-cell hud-buttons">
+    <button id="hintBtn" type="button">Hint (H)</button>
+    <button id="pauseBtn" type="button">Pause (P)</button>
+    <button id="soundBtn" type="button">Sound: on (M)</button>
+  </div>
+</section>
+<p id="hintText" class="hint-text" aria-live="polite"></p>
+
+<main class="stage-wrap">
+  <div class="stage">
+    <figure class="panel">
+      <canvas id="panelLeft" width="500" height="620"></canvas>
+      <figcaption>Picture A — as it was</figcaption>
+    </figure>
+    <figure class="panel">
+      <canvas id="panelRight" width="500" height="620"></canvas>
+      <figcaption>Picture B — as it is now</figcaption>
+    </figure>
+
+    <div class="overlay" id="ovTitle">
+      <div class="card">
+        <h2>Keeneye Cove</h2>
+        <p>Two pictures, side by side — and a few things in the right-hand one
+           are not as they were. Click a difference in either picture to ring it.</p>
+        <p>Three scenes of rising difficulty: 5, then 6, then 7 differences.
+           A miss costs 15 points and 4 seconds. You carry 3 hints for the whole hunt.</p>
+        <button id="startBtn" type="button" class="big">Start the hunt (Enter)</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="ovPaused">
+      <div class="card">
+        <h2>Paused</h2>
+        <p>The cove waits. The clock is stopped.</p>
+        <button id="resumeBtn" type="button" class="big">Resume (P)</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="ovDone">
+      <div class="card">
+        <h2 id="doneTitle">Scene cleared!</h2>
+        <p id="doneStats"></p>
+        <button id="nextBtn" type="button" class="big">Next scene (N)</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="ovTimeup">
+      <div class="card">
+        <h2>Time's up</h2>
+        <p id="timeupStats"></p>
+        <button id="retryBtn" type="button" class="big">Start over (R)</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="ovVictory">
+      <div class="card">
+        <h2>The Cove is solved!</h2>
+        <p>Every difference in all three scenes, found and ringed.</p>
+        <p id="victoryStats"></p>
+        <button id="againBtn" type="button" class="big">Play again (R)</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  Click a difference in either picture · H hint · P pause · M sound · A miss costs 15 points and 4 seconds
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
